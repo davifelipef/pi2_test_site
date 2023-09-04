@@ -1,4 +1,4 @@
-/* Config for small screens*/
+/* Config for most small screens*/
 @media only screen and (min-width:320px) {
     body {
         margin: 0;
