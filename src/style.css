@@ -38,35 +38,43 @@
     }
     a {
         text-decoration: none;
-        color:#FEE715
+        color:#FEE715;
     }
     ul {
         position: relative;
         display: inline;
         padding: 0.4em;
         font-size: 1em;
+        margin: 0;
     }
     .nav-bar {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
         text-align: right;
-        padding: 0.5em 2em;
+        padding: 1.5em 2em;
         cursor: pointer;
         user-select: none;
         -webkit-tap-highlight-color: transparent;
         -webkit-user-select: none;
         touch-action: manipulation;
     }
+    .nav-bar ul {
+        margin-right: 1em; 
+    }
+    .nav-bar a {
+        text-decoration: none; 
+        color: #FEE715; 
+    }
     .cart {
         position: relative;
-        padding: 1em 0.4em;
+        padding: 0.2em 0.4em;
         font-size: 1.2em;
     }
     .cartItems {
         position: absolute;
-        top: 0.6em;
-        right: -0.10em;
+        top: -0.4em;
+        right: -0.40em;
         padding: 0.09em 0.2em;
         border-radius: 0.2em;
         background-color: red;
@@ -185,17 +193,44 @@
         color:#FEE715
     }
     ul {
+        position: relative;
         display: inline;
+        padding: 0.4em;
+        font-size: 1em;
+        margin: 0;
     }
     .nav-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
         text-align: right;
-        padding-top: 4vh;
-        margin-right: 2em;
+        padding: 1.5em 2em;
         cursor: pointer;
         user-select: none;
         -webkit-tap-highlight-color: transparent;
         -webkit-user-select: none;
         touch-action: manipulation;
+    }
+    .nav-bar ul {
+        margin-right: 1em; 
+    }
+    .nav-bar a {
+        text-decoration: none; 
+        color: #FEE715; 
+    }
+    .cart {
+        position: relative;
+        padding: 0.2em 0.4em;
+        font-size: 1.2em;
+    }
+    .cartItems {
+        position: absolute;
+        top: -0.4em;
+        right: -0.40em;
+        padding: 0.09em 0.2em;
+        border-radius: 0.2em;
+        background-color: red;
+        font-size: 0.7em;
     }
     .image_box {
         display: flex;
