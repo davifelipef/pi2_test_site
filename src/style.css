@@ -113,6 +113,13 @@
     .button {
         padding: 1em 0.5em;
     }
+    #addButton {
+        background-color: #FEE715;
+        color: black;
+        padding: 0.5em 0.5em;
+        border-radius: 0.8em;
+        font-style: normal;
+    }
     p {
         padding: 0em 2em 0em 2em;
     }
@@ -186,11 +193,15 @@
         }
     }
     h1 {
-        font-size: 1.8em;
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1em;
+        padding: 0.5em;
     }
     a {
         text-decoration: none;
-        color:#FEE715
+        color:#FEE715;
     }
     ul {
         position: relative;
@@ -255,12 +266,61 @@
         -webkit-user-select: none;
         touch-action: manipulation;
     }
+    .foodList, .listContainer {
+        width: 10em;
+    }
+    .i_weight {
+        width: 3em;
+        text-align: center;
+    }
+    .button {
+        padding: 1em 0.5em;
+    }
+    #addButton {
+        background-color: #FEE715;
+        color: black;
+        padding: 0.5em 0.5em;
+        border-radius: 0.8em;
+        font-style: normal;
+    }
     p {
         padding: 0em 2em 0em 2em;
     }
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: white;
+        color: black;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+    }
+
+    /* Close Button */
+    .close {
+        position: absolute;
+        color: yellow;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        cursor: pointer;
+    }
+
     footer {
         margin-top: auto;
-        padding-bottom: 1em;
+        padding: 1em 1em;
     }
     .github {
         width: 3.5em;
