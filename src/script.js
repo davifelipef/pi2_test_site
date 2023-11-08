@@ -12,6 +12,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartItemsList = document.getElementById('cartItemsList');
     const inputWeight = document.getElementById('i_weight');
 
+    // Retrieve the existing data from local storage
+    const storedData = JSON.parse(localStorage.getItem('studentData')) || [];
+    console.log("storedData content is:" + storedData);
+
+    // Get the displayData element
+    const displayData = document.getElementById('displayData');
+
+    // Check if there's any data available
+    if (storedData.length > 0) {
+        // Display the existing data
+        displayData.innerHTML = generateDisplayText(storedData);
+    } else {
+        displayData.innerHTML = 'Nenhum dado encontrado.';
+    }
+
     // Chama a função que preenche as informações assim que a página carrega
     window.onload = function() {
         // Atribui o elemento HTML à constante
@@ -20,46 +35,42 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedOptionId = selectedOption.id;
         // Chama a função com o ID da opção selecionada
         fetchDataAndPopulateList(selectedOptionId);
-
-        // Recupera os dados do armazenamento local
-        const storedName = localStorage.getItem('nome');
-        const storedGroup = localStorage.getItem('turma');
-
-        // Encontra o elemento a ser atualizado
-        const displayData = document.getElementById('displayData');
-
-        // Verifica se existem dados no armazenamento local
-        if (storedName && storedGroup) {
-            // Se existirem, atualiza o elemento apropriado
-            displayData.innerHTML = `Nome: ${storedName}, Turma: ${storedGroup}`;
-            // Se não existirem, exibe uma mensagem
-        } else {
-            displayData.innerHTML = 'Nenhum dado encontrado.';
-        }
     }
 
     document.getElementById('sent-info').addEventListener('click', function () {
-        // dev log
-        console.log("Botão cadastrar foi clicado.");
         // Get the values from the input fields
         const name = document.getElementById('name').value;
         const group = document.getElementById('group').value;
-        // dev log
-        console.log("Nome capturado: " + name +", " + "Grupo registrado: " + group);
+
+        // Create a new data object
+        const newData = { name, group };
 
         // Check if local storage is supported by the browser
         if (typeof Storage !== "undefined") {
-            // Store the values in local storage
-            localStorage.setItem('nome', name);
-            localStorage.setItem('turma', group);
-            console.log("Dados salvos.");
+            // Retrieve the existing data from local storage
+            const existingData = JSON.parse(localStorage.getItem('studentData')) || [];
+
+            // Add the new data to the existing data
+            existingData.push(newData);
+
+            // Store the updated data in local storage
+            localStorage.setItem('studentData', JSON.stringify(existingData));
+
             // Clear the input fields
             document.getElementById('name').value = '';
             document.getElementById('group').value = '';
+
+            // Display the updated data
+            displayData.innerHTML = generateDisplayText(existingData);
         } else {
             console.log("Salvamento local não disponível neste navegador.");
         }
     });
+
+    function generateDisplayText(data) {
+        // Generate a display text for the stored data
+        return data.map(item => `Nome: ${item.name}, Turma: ${item.group}`).join('<br>');
+    }
 
     // Adiciona um event listener para detectar mudança na lista de tipo de alimentos
     document.getElementById('foodList').addEventListener('change', function() {
