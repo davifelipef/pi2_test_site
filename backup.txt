@@ -1,0 +1,61 @@
+    // Retrieve the existing data from local storage if it exists
+    const storedData = JSON.parse(localStorage.getItem('studentData')) || [];
+    // console.log("storedData content is:" + storedData);
+
+    // Get the displayData element
+    const displayData = document.getElementById('displayData');
+
+    // Check if there's any data available
+    if (storedData.length > 0) {
+        // Display the existing data
+        displayData.innerHTML = generateDisplayText(storedData);
+    } else {
+        displayData.innerHTML = 'Nenhum dado encontrado.';
+    }
+
+    // Listens to the addition of new data to the local storage
+    document.getElementById('sent-info').addEventListener('click', function () {
+        // Get the values from the input fields
+        const name = document.getElementById('name').value;
+        const group = document.getElementById('group').value;
+
+        // Create a new data object
+        const newData = { name, group };
+
+        // Check if local storage is supported by the browser
+        if (typeof Storage !== "undefined") {
+            // Retrieve the existing data from local storage
+            const existingData = JSON.parse(localStorage.getItem('studentData')) || [];
+
+            // Add the new data to the existing data
+            existingData.push(newData);
+
+            // Store the updated data in local storage
+            localStorage.setItem('studentData', JSON.stringify(existingData));
+
+            // Clear the input fields
+            document.getElementById('name').value = '';
+            document.getElementById('group').value = '';
+
+            // Display the updated data
+            displayData.innerHTML = generateDisplayText(existingData);
+        } else {
+            console.log("Salvamento local não disponível neste navegador.");
+        }
+    });
+
+    // Displays the data from the local storage on list format
+    function generateDisplayText(data) {
+        // Generate a display text for the stored data
+        return data.map(item => `Nome: ${item.name}, Turma: ${item.group}`).join('<br>');
+    }
+
+            // Atribui o elemento da lista suspensa de nomes a uma constante
+            const dropdown = document.getElementById('nameDropdown');
+            // Itera pelos dados locais e popula a lista suspensa de nomes
+            storedData.forEach(item => {
+                const option2 = document.createElement('option');
+                option2.value = item.name;
+                option2.textContent = item.name;
+                dropdown.appendChild(option2);
+            });
