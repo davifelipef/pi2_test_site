@@ -12,7 +12,7 @@
     <body>
         <header>
             <nav class="nav-bar">
-                <!--<h2>ContCarb</h2>-->
+                <!--<h2>SisCarb</h2>-->
                 <ul><a href="./index.html">Home</a></ul>
                 <ul><a href="./faq.html">FAQ</a></ul>
                 <ul><a href="./login.html">Login</a></ul>
@@ -25,7 +25,6 @@
         <main class="content">
             <section>
                 <h1>Calculadora de Carboidratos</h1>
-                    <!--<p>Teste de importação de dados do arquivo CSV:</p>-->
                     <p>Escolha o tipo de tabela abaixo:</p>
                     <select id="foodList" class="foodList">
                         <option id="tb1" selected>Alimentos</option>
@@ -52,19 +51,20 @@
                     <h3>Carboidratos:</h3>
                         <p id="carbs"></p>
                     <div class="button">
-                        <i class="bi bi-plus-square-fill" id="addButton"> Adicionar ao carrinho</i>
+                        <i class="bi bi-plus-square-fill" id="addButton"> Adicionar ao cardápio</i>
                     </div>
                     <div id="cartModal" class="modal">
                         <div class="modal-content">
                             <span class="close">&times;</span>
-                            <h2>Carrinho</h2>
+                            <h2>Cardápio</h2>
                             <ul id="cartItemsList"></ul>
+                            <input type="button" id="submit" value="Salvar informações">
                         </div>
                     </div>                    
             </section>
         </main>
         <footer>
-            <a href="https://github.com/davifelipef/pi2_test_site">
+            <a href="https://github.com/tomvieira/contagem-carboidratos">
                 <img src="./images/github.png" class="github" alt="Ícone do com o logotipo do Github.">
             </a>
         </footer>

@@ -81,19 +81,19 @@
         font-size: 0.7em;
     }
     .image_box {
-        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        padding-top: 4vh;
+        /*padding-top: 4vh;*/
     }
     .image_container {
-        text-align: center; 
-        margin: 0 0.8em; 
+        flex: 0 0 calc(50% - 0.1em);
     }
     .image_container:hover {
         transform: scale(1.1); 
         transition: 0.5s ease;
     }
-    .menu, .calculator {
+    .menu, .calculator, .registration {
+        max-width: 100%;
         width: 5em;
         padding: 2vh;
         cursor: pointer;
@@ -102,9 +102,6 @@
         -webkit-tap-highlight-color: transparent;
         -webkit-user-select: none;
         touch-action: manipulation;
-    }
-    .menu {
-        filter: grayscale(100%);
     }
     .foodList, .listContainer {
         width: 10em;
@@ -151,6 +148,19 @@
         border: 1px solid #888;
         width: 80%;
         max-width: 500px;
+    }
+    #submit {
+        transition: 0.8s ease;
+        background-color: #e5ff00af;
+        color: black;
+        padding: 0.5em 0.5em;
+        border-radius: 0.8em;
+        font-style: normal;
+        margin: 10% auto;
+    }
+    #submit:hover {
+        transition: 0.8s ease;
+        background-color: #FEE715;
     }
 
     /* Close Button */
@@ -260,6 +270,7 @@
         padding-top: 4vh;
     }
     .image_container {
+        flex: 1;
         text-align: center; 
         margin: 0 0.8em; 
     }
@@ -267,7 +278,7 @@
         transform: scale(1.1); 
         transition: 0.5s ease;
     }
-    .menu, .calculator {
+    .menu, .calculator, .registration {
         width: 5em;
         padding: 2vh;
         cursor: pointer;

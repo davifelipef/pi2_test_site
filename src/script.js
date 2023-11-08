@@ -22,6 +22,44 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataAndPopulateList(selectedOptionId);
     }
 
+    document.getElementById('sent-info').addEventListener('click', function () {
+        // dev log
+        console.log("Botão cadastrar foi clicado.");
+        // Get the values from the input fields
+        const name = document.getElementById('name').value;
+        const group = document.getElementById('group').value;
+        // dev log
+        console.log("Nome capturado: " + name +", " + "Grupo registrado: " + group);
+
+        // Check if local storage is supported by the browser
+        if (typeof Storage !== "undefined") {
+            // Store the values in local storage
+            localStorage.setItem('nome', name);
+            localStorage.setItem('turma', group);
+            console.log("Dados salvos.");
+            // Clear the input fields
+            document.getElementById('name').value = '';
+            document.getElementById('group').value = '';
+        } else {
+            console.log("Salvamento local não disponível neste navegador.");
+        }
+
+        // Retrieve data from local storage
+        const storedName = localStorage.getItem('name');
+        const storedGroup = localStorage.getItem('group');
+
+        // Get the displayData element
+        const displayData = document.getElementById('displayData');
+
+        // Check if the data is available in local storage
+        if (storedName && storedGroup) {
+            // Update the content of the displayData element
+            displayData.innerHTML = `Nome: ${storedName}, Turma: ${storedGroup}`;
+        } else {
+            displayData.innerHTML = 'Nenhum dado encontrado.';
+        }
+    });
+
     // Adiciona um event listener para detectar mudança na lista de tipo de alimentos
     document.getElementById('foodList').addEventListener('change', function() {
         const selectElement = document.getElementById('foodList');
