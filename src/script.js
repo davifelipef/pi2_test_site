@@ -20,6 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedOptionId = selectedOption.id;
         // Chama a função com o ID da opção selecionada
         fetchDataAndPopulateList(selectedOptionId);
+
+        // Recupera os dados do armazenamento local
+        const storedName = localStorage.getItem('nome');
+        const storedGroup = localStorage.getItem('turma');
+
+        // Encontra o elemento a ser atualizado
+        const displayData = document.getElementById('displayData');
+
+        // Verifica se existem dados no armazenamento local
+        if (storedName && storedGroup) {
+            // Se existirem, atualiza o elemento apropriado
+            displayData.innerHTML = `Nome: ${storedName}, Turma: ${storedGroup}`;
+            // Se não existirem, exibe uma mensagem
+        } else {
+            displayData.innerHTML = 'Nenhum dado encontrado.';
+        }
     }
 
     document.getElementById('sent-info').addEventListener('click', function () {
@@ -42,21 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('group').value = '';
         } else {
             console.log("Salvamento local não disponível neste navegador.");
-        }
-
-        // Retrieve data from local storage
-        const storedName = localStorage.getItem('name');
-        const storedGroup = localStorage.getItem('group');
-
-        // Get the displayData element
-        const displayData = document.getElementById('displayData');
-
-        // Check if the data is available in local storage
-        if (storedName && storedGroup) {
-            // Update the content of the displayData element
-            displayData.innerHTML = `Nome: ${storedName}, Turma: ${storedGroup}`;
-        } else {
-            displayData.innerHTML = 'Nenhum dado encontrado.';
         }
     });
 
